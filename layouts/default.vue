@@ -4,6 +4,7 @@
       <nuxt-link to="secret">Secret</nuxt-link>
       <nuxt-link to="/">Home</nuxt-link>
       <button v-if="!loggedIn" @click="login">Login</button>
+      <button v-if="loggedIn" @click="logout">Logout</button>
     </div>
     <nuxt />
   </div>
@@ -19,6 +20,9 @@ export default {
   methods: {
     login() {
       this.$auth.loginWith('github')
+    },
+    logout() {
+      this.$auth.logout()
     }
   }
 }
