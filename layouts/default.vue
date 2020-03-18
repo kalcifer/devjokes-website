@@ -1,9 +1,23 @@
 <template>
   <div>
+    <div>
+      <nuxt-link to="secret">Secret</nuxt-link>
+      <nuxt-link to="/">Home</nuxt-link>
+      <button @click="login">Login</button>
+    </div>
     <nuxt />
   </div>
 </template>
 
+<script>
+export default {
+  methods: {
+    login() {
+      this.$auth.loginWith('github')
+    }
+  }
+}
+</script>
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
