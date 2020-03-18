@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       loggedIn: this.$auth.loggedIn,
-      user: {}
+      user: this.$auth.user
     }
   },
   methods: {
@@ -25,12 +25,6 @@ export default {
     },
     logout() {
       this.$auth.logout()
-    },
-    async ready() {
-      if (this.$auth.loggedIn) {
-        this.user = await this.$auth.fetchUser()
-        console.log(this.user)
-      }
     }
   }
 }
