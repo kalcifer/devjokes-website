@@ -27,8 +27,9 @@ export default {
       this.$auth.logout()
     },
     async ready() {
-      if (this.loggedIn) {
+      if (this.$auth.loggedIn) {
         this.user = await this.$auth.fetchUser()
+        console.log(this.user)
       }
     }
   }
