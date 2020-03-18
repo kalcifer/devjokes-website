@@ -1,6 +1,6 @@
 # devjokes-website
 
-> The devjokes official website
+> Devjokes website
 
 ## Build Setup
 

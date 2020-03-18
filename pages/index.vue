@@ -6,7 +6,7 @@
         devjokes-website
       </h1>
       <h2 class="subtitle">
-        The devjokes official website
+        Devjokes website
       </h2>
       <div class="links">
         <a href="https://nuxtjs.org/" target="_blank" class="button--green">
@@ -32,7 +32,6 @@ export default {
     Logo
   }
 }
-this.$auth.loginWith('github')
 </script>
 
 <style>
