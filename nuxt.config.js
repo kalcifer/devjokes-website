@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   mode: 'universal',
   /*
    ** Headers of the page
@@ -14,14 +14,7 @@ module.exports = {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [
-      {
-        rel: 'stylesheet',
-        href:
-          'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
-      },
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   /*
    ** Customize the progress-bar color
@@ -30,11 +23,11 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: ['framevuerk/dist/framevuerk-nuxt.min.css'],
+  css: [],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['@/plugins/framevuerk'],
+  plugins: [],
   /*
    ** Nuxt.js dev-modules
    */

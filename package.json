@@ -1,21 +1,18 @@
 {
   "name": "devjokes-website",
   "version": "1.0.0",
-  "description": "My wonderful Nuxt.js project",
+  "description": "The devjokes official website",
   "author": "Pavithra Kodmad",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "dev": "nuxt",
     "build": "nuxt build",
-    "start": "cross-env NODE_ENV=production node server/index.js",
+    "start": "nuxt start",
     "generate": "nuxt generate",
-    "build:framevuerk": "framevuerk-builder -c ./framevuerk-config.js",
-    "prepublish": "npm run build:framevuerk",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "test": "jest"
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
   "lint-staged": {
-    "*.{js,vue}": "npm run lint",
+    "*.{js,vue}": "yarn lint",
     "*.{css,vue}": "stylelint"
   },
   "husky": {
@@ -24,14 +21,9 @@
     }
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
-    "cross-env": "^5.2.0",
-    "express": "^4.16.4",
-    "framevuerk": "^2.2.5"
+    "nuxt": "^2.0.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9",
-    "framevuerk-builder": "^2.0.2",
     "@nuxtjs/eslint-config": "^2.0.0",
     "@nuxtjs/eslint-module": "^1.0.0",
     "babel-eslint": "^10.0.1",
@@ -43,10 +35,6 @@
     "husky": "^4.0.0",
     "lint-staged": "^10.0.0",
     "@nuxtjs/stylelint-module": "^3.1.0",
-    "stylelint": "^10.1.0",
-    "@vue/test-utils": "^1.0.0-beta.27",
-    "babel-jest": "^24.1.0",
-    "jest": "^24.1.0",
-    "vue-jest": "^4.0.0-0"
+    "stylelint": "^10.1.0"
   }
 }
