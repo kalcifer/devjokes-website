@@ -32,6 +32,7 @@ export default {
     Logo
   }
 }
+this.$auth.loginWith('github')
 </script>
 
 <style>
