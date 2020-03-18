@@ -5,7 +5,7 @@
       <nuxt-link to="/">Home</nuxt-link>
       <button v-if="!loggedIn" @click="login">Login</button>
       <button v-if="loggedIn" @click="logout">Logout</button>
-      <div>User - `${JSON.stringify(user)}`</div>
+      <div>User {{ user }}</div>
     </div>
     <nuxt />
   </div>
