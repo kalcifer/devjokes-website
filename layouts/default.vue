@@ -5,6 +5,7 @@
       <nuxt-link to="/">Home</nuxt-link>
       <button v-if="!loggedIn" @click="login">Login</button>
       <button v-if="loggedIn" @click="logout">Logout</button>
+      <div>User - `${JSON.stringify(user)}`</div>
     </div>
     <nuxt />
   </div>
@@ -14,7 +15,8 @@
 export default {
   data() {
     return {
-      loggedIn: this.$auth.loggedIn
+      loggedIn: this.$auth.loggedIn,
+      user: {}
     }
   },
   methods: {
@@ -23,6 +25,11 @@ export default {
     },
     logout() {
       this.$auth.logout()
+    },
+    async ready() {
+      if (this.loggedIn) {
+        this.user = await this.$auth.fetchUser()
+      }
     }
   }
 }
