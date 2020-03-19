@@ -40,7 +40,22 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxtjs/axios', '@nuxtjs/auth'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/auth', '@nuxtjs/firebase'],
+  firebase: {
+    config: {
+      apiKey: 'AIzaSyBn1DP5AR2wN6irwNyI08XicNkR4CJdgMI',
+      authDomain: 'devjokes-4031d.firebaseapp.com',
+      databaseURL: 'https://devjokes-4031d.firebaseio.com',
+      projectId: 'devjokes-4031d',
+      storageBucket: 'devjokes-4031d.appspot.com',
+      messagingSenderId: '746655741397',
+      appId: '1:746655741397:web:ff32ddd58dcb90661bb95c',
+      measurementId: 'G-LV52VK9K9J'
+    },
+    services: {
+      firestore: true
+    }
+  },
   auth: {
     strategies: {
       github: {
@@ -58,6 +73,7 @@ export default {
    ** Build configuration
    */
   build: {
+    transpile: [/^nuxt-fire/],
     /*
      ** You can extend webpack config here
      */
