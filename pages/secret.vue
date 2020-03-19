@@ -22,9 +22,7 @@ export default {
       alert('Success.')
     },
     async readFromFirestore() {
-      const messageRef = this.$fireStore
-        .collection('jokes')
-        .doc('LtoJpmn3mL2aYk3gbVlx')
+      const messageRef = this.$fireStore.collection('jokes').doc('joke1')
       try {
         const snapshot = await messageRef.get()
         const doc = snapshot.data()
