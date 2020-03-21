@@ -8,17 +8,8 @@
       <h2 class="subtitle">
         Devjokes website
       </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+      <div v-if="randomJoke">
+        {{ randomJoke.text }}
       </div>
     </div>
   </div>
@@ -30,6 +21,32 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
+  },
+  data() {
+    return {
+      randomJoke: null
+    }
+  },
+  mounted() {
+    this.showRandomJoke()
+  },
+  methods: {
+    getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max))
+    },
+    showRandomJoke() {
+      setInterval(() => {
+        const db = this.$fireStore.collection('jokes')
+        db.get().then((querySnapshot) => {
+          const size = querySnapshot.size
+          const randomNo = this.getRandomInt(size)
+          console.log(querySnapshot)
+          const randomJoke = querySnapshot.docs[randomNo].data()
+          console.log(randomJoke)
+          this.randomJoke = randomJoke
+        })
+      }, 20000)
+    }
   }
 }
 </script>

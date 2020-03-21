@@ -1,20 +1,46 @@
 <template>
-  <div>
+  <v-sheet height="400" class="overflow-hidden" style="position: relative;">
+    <v-navigation-drawer v-model="drawer" absolute temporary>
+      <v-list-item v-if="user">
+        <v-list-item-avatar>
+          <v-img src="{{user.avatar_url}}"></v-img>
+        </v-list-item-avatar>
+
+        <v-list-item-content>
+          <v-list-item-title>{{ user.login }}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-divider></v-divider>
+      <v-list dense>
+        <v-list-item :key="Home" link>
+          <!-- <v-list-item-icon>
+          <v-icon>{{ item.icon }}</v-icon>
+        </v-list-item-icon> -->
+          <v-list-item-content>
+            <v-list-item-title
+              ><nuxt-link to="/">Home</nuxt-link></v-list-item-title
+            >
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
     <div>
-      <nuxt-link to="secret">Secret</nuxt-link>
-      <nuxt-link to="/">Home</nuxt-link>
       <button v-if="!loggedIn" @click="login">Login</button>
       <button v-if="loggedIn" @click="logout">Logout</button>
       <div>User {{ user }}</div>
+      <v-btn color="pink" dark @click.stop="drawer = !drawer">
+        Toggle
+      </v-btn>
+      <nuxt />
     </div>
-    <nuxt />
-  </div>
+  </v-sheet>
 </template>
 
 <script>
 export default {
   data() {
     return {
+      drawer: null,
       loggedIn: this.$auth.loggedIn,
       user: this.$auth.user
     }

@@ -30,7 +30,6 @@ export default {
           alert('Document does not exist.')
           return
         }
-        alert(doc.text)
       } catch (e) {
         alert(e)
       }
