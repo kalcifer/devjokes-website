@@ -1,5 +1,9 @@
 export default {
   mode: 'spa',
+  server: {
+    port: 8000, // default: 3000
+    host: '0.0.0.0' // default: localhost
+  },
   /*
    ** Headers of the page
    */
@@ -83,5 +87,21 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  vuetify: {
+    themes: {
+      light: {
+        theme: {
+          background: '#a6e2d0',
+          primary: '#1976D2',
+          secondary: '#424242',
+          accent: '#82B1FF',
+          error: '#FF5252',
+          info: '#2196F3',
+          success: '#4CAF50',
+          warning: '#FFC107'
+        }
+      }
+    }
   }
 }

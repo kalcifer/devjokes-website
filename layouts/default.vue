@@ -1,38 +1,47 @@
 <template>
-  <v-sheet height="400" class="overflow-hidden" style="position: relative;">
-    <v-navigation-drawer v-model="drawer" absolute temporary>
-      <v-list-item v-if="user">
-        <v-list-item-avatar>
-          <v-img src="{{user.avatar_url}}"></v-img>
-        </v-list-item-avatar>
-
-        <v-list-item-content>
-          <v-list-item-title>{{ user.login }}</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-      <v-divider></v-divider>
-      <v-list dense>
-        <v-list-item :key="Home" link>
-          <!-- <v-list-item-icon>
-          <v-icon>{{ item.icon }}</v-icon>
-        </v-list-item-icon> -->
-          <v-list-item-content>
-            <v-list-item-title
-              ><nuxt-link to="/">Home</nuxt-link></v-list-item-title
-            >
+  <v-sheet class="overflow-hidden " style="position: relative;">
+    <v-app class="green-container" light>
+      <v-navigation-drawer v-model="drawer" absolute temporary>
+        <v-list-item v-if="user">
+          <v-list-item-avatar class="margin-right">
+            <v-img :src="user['avatar_url']"></v-img>
+          </v-list-item-avatar>
+          <v-divider vertical="true"></v-divider>
+          <v-list-item-content class="margin-left">
+            <v-list-item-title>{{ user.login }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <div>
-      <button v-if="!loggedIn" @click="login">Login</button>
-      <button v-if="loggedIn" @click="logout">Logout</button>
-      <div>User {{ user }}</div>
-      <v-btn color="pink" dark @click.stop="drawer = !drawer">
-        Toggle
-      </v-btn>
-      <nuxt />
-    </div>
+        <v-divider></v-divider>
+        <v-list dense>
+          <v-list-item :key="Home" nuxt>
+            <!-- <v-list-item-icon>
+          <v-icon>{{ item.icon }}</v-icon>
+        </v-list-item-icon> -->
+            <v-list-item-content>
+              <v-list-item-title
+                ><nuxt-link to="/">Home</nuxt-link></v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
+
+      <v-card color="#442021" flat tile>
+        <v-toolbar short>
+          <v-app-bar-nav-icon
+            @click.stop="drawer = !drawer"
+          ></v-app-bar-nav-icon>
+          <v-spacer></v-spacer>
+          <v-toolbar-title>DEV JOKES</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-btn v-if="!loggedIn" small>Login <v-icon>mdi-login</v-icon></v-btn>
+          <v-btn v-if="loggedIn" small>Logout<v-icon>mdi-logout</v-icon></v-btn>
+        </v-toolbar>
+      </v-card>
+      <v-content class="green-container">
+        <nuxt />
+      </v-content>
+    </v-app>
   </v-sheet>
 </template>
 
@@ -102,5 +111,16 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+.green-container {
+  background-color: #a6e2d0;
+}
+
+.margin-right {
+  margin-right: 10px;
+}
+
+.margin-left {
+  margin-left: 10px;
 }
 </style>

@@ -1,51 +1,53 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        devjokes-website
-      </h1>
-      <h2 class="subtitle">
-        Devjokes website
-      </h2>
-      <div v-if="randomJoke">
+  <v-card
+    class="mx-auto mt-10"
+    max-width="400"
+    min-height="200"
+    raised
+    :loading="true"
+    color="#f5aab4"
+  >
+    <v-card-text v-if="randomJoke" color="#442021">
+      <div class="overline mb-4">Joke no:{{ randomJoke.id }}</div>
+      <p class="headline mb-1">
         {{ randomJoke.text }}
-      </div>
-    </div>
-  </div>
+      </p>
+    </v-card-text>
+    <template #progress> </template>
+  </v-card>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
-  },
   data() {
     return {
-      randomJoke: null
+      randomJoke: {
+        id: 20,
+        text: 'HUge huge joke'
+      },
+      querySnapshot: null
     }
   },
   mounted() {
-    this.showRandomJoke()
+    // const db = this.$fireStore.collection('jokes')
+    // db.get().then((querySnapshot) => {
+    //   this.querySnapshot = querySnapshot
+    // })
+    // this.makeRandomJoke()
+    // this.showRandomJoke()
   },
   methods: {
-    getRandomInt(max) {
-      return Math.floor(Math.random() * Math.floor(max))
+    makeRandomJoke() {
+      if (this.querySnapshot) {
+        const randomNo = Math.floor(
+          Math.random() * Math.floor(this.querySnapshot.size)
+        )
+        const randomJoke = this.querySnapshot.docs[randomNo].data()
+        this.randomJoke = randomJoke
+      }
     },
     showRandomJoke() {
-      setInterval(() => {
-        const db = this.$fireStore.collection('jokes')
-        db.get().then((querySnapshot) => {
-          const size = querySnapshot.size
-          const randomNo = this.getRandomInt(size)
-          console.log(querySnapshot)
-          const randomJoke = querySnapshot.docs[randomNo].data()
-          console.log(randomJoke)
-          this.randomJoke = randomJoke
-        })
-      }, 20000)
+      setInterval(this.getRandomJoke, 20000)
     }
   }
 }
