@@ -1,6 +1,6 @@
 <template>
   <v-sheet class="overflow-hidden " style="position: relative;">
-    <v-app class="green-container" light>
+    <v-app class="green-container" light color="#442021">
       <v-navigation-drawer v-model="drawer" absolute temporary>
         <v-list-item v-if="user">
           <v-list-item-avatar class="margin-right">
@@ -20,6 +20,18 @@
             <v-list-item-content>
               <v-list-item-title
                 ><nuxt-link to="/">Home</nuxt-link></v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item v-if="loggedIn" :key="Submit" nuxt>
+            <!-- <v-list-item-icon>
+          <v-icon>{{ item.icon }}</v-icon>
+        </v-list-item-icon> -->
+            <v-list-item-content>
+              <v-list-item-title
+                ><nuxt-link to="/submit"
+                  >Submit Joke</nuxt-link
+                ></v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
