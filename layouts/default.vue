@@ -76,6 +76,7 @@ export default {
     },
     logout() {
       this.$auth.logout()
+      window.location.reload(true)
     }
   }
 }
