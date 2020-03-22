@@ -46,8 +46,12 @@
           <v-spacer></v-spacer>
           <v-toolbar-title>DEV JOKES</v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-btn v-if="!loggedIn" small>Login <v-icon>mdi-login</v-icon></v-btn>
-          <v-btn v-if="loggedIn" small>Logout<v-icon>mdi-logout</v-icon></v-btn>
+          <v-btn v-if="!loggedIn" small @click="login()"
+            >Login <v-icon>mdi-login</v-icon></v-btn
+          >
+          <v-btn v-if="loggedIn" small @click="logout()"
+            >Logout<v-icon>mdi-logout</v-icon></v-btn
+          >
         </v-toolbar>
       </v-card>
       <v-content class="green-container">
