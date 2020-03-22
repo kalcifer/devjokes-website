@@ -1,6 +1,6 @@
 <template>
   <v-sheet class="overflow-hidden " style="position: relative;">
-    <v-app class="green-container" light color="#442021">
+    <v-app class="green-container" light>
       <v-navigation-drawer v-model="drawer" absolute temporary>
         <v-list-item v-if="user">
           <v-list-item-avatar class="margin-right">
@@ -44,7 +44,7 @@
             @click.stop="drawer = !drawer"
           ></v-app-bar-nav-icon>
           <v-spacer></v-spacer>
-          <v-toolbar-title>DEV JOKES</v-toolbar-title>
+          <v-toolbar-title class="font-family">DEV JOKES</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-btn v-if="!loggedIn" small @click="login()"
             >Login <v-icon>mdi-login</v-icon></v-btn
@@ -93,6 +93,11 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
+.font-family {
+  font-family: 'VT323', monospace;
+  font-size: 70px;
+  color: #424242;
+}
 
 *,
 *:before,
@@ -130,7 +135,7 @@ html {
   background-color: #35495e;
 }
 .green-container {
-  background-color: #a6e2d0;
+  background-color: #1b262c;
 }
 
 .margin-right {

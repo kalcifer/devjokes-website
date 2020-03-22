@@ -18,7 +18,13 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=VT323&display=swap'
+      }
+    ]
   },
   /*
    ** Customize the progress-bar color
@@ -89,13 +95,13 @@ export default {
     extend(config, ctx) {}
   },
   vuetify: {
-    themes: {
-      light: {
-        theme: {
-          background: '#a6e2d0',
-          primary: '#1976D2',
+    theme: {
+      themes: {
+        light: {
+          background: '#1b262c',
+          primary: '#ed6663',
           secondary: '#424242',
-          accent: '#82B1FF',
+          accent: '#ffa372',
           error: '#FF5252',
           info: '#2196F3',
           success: '#4CAF50',

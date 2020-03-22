@@ -5,11 +5,14 @@
     min-height="200"
     raised
     :loading="true"
-    color="#f5aab4"
+    border-color="accent"
+    light
   >
-    <v-card-text v-if="randomJoke" color="#442021">
-      <div class="overline mb-4">Joke no:{{ randomJoke.id }}</div>
-      <p class="headline mb-1">
+    <v-card-text v-if="randomJoke" color="primary">
+      <div class="overline mb-4 secondary--text">
+        Joke no:{{ randomJoke.id }}
+      </div>
+      <p class="headline mb-1 primary--text">
         {{ randomJoke.text }}
       </p>
     </v-card-text>
