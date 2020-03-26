@@ -2,11 +2,17 @@
   <v-card class="mx-auto mt-10" max-width="400" min-height="200" raised>
     <v-form ref="form" v-model="valid" lazy-validation>
       <v-col cols="12">
-        <v-textarea v-model="jokeText" counter color="#f5aab4">
+        <v-spacer></v-spacer>
+        <v-textarea v-model="jokeText" color="#f5aab4" auto-grow>
           <template v-slot:label>
             <div>Joke Text</div>
           </template>
         </v-textarea>
+        <v-text-field v-model="jokeImgUrl">
+          <template v-slot:label>
+            <div>Joke Img</div>
+          </template>
+        </v-text-field>
       </v-col>
       <v-card-actions>
         <v-spacer></v-spacer>
@@ -29,33 +35,32 @@
 <script>
 export default {
   middleware: 'auth',
-  data: () => ({
-    valid: true,
-    name: '',
-    nameRules: [
-      (v) => !!v || 'Name is required',
-      (v) => (v && v.length <= 10) || 'Name must be less than 10 characters'
-    ],
-    email: '',
-    emailRules: [
-      (v) => !!v || 'E-mail is required',
-      (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid'
-    ],
-    select: null,
-    items: ['Item 1', 'Item 2', 'Item 3', 'Item 4'],
-    checkbox: false
-  }),
 
   methods: {
-    validate() {
-      this.$refs.form.validate()
-    },
-    reset() {
-      this.$refs.form.reset()
-    },
-    resetValidation() {
-      this.$refs.form.resetValidation()
+    async submit() {
+      const currentData = localStorage.getItem('allData')
+      const newDoc = this.$fireStore
+        .collection('jokes')
+        .doc(`joke${currentData.length}`)
+      try {
+        await newDoc.set({
+          text: this.jokeText
+        })
+      } catch (e) {
+        alert(e)
+        return
+      }
+      alert('Success.')
     }
+    // validate() {
+    //   this.$refs.form.validate()
+    // },
+    // reset() {
+    //   this.$refs.form.reset()
+    // },
+    // resetValidation() {
+    //   this.$refs.form.resetValidation()
+    // }
   }
 }
 </script>

@@ -58,14 +58,14 @@ export default {
   ],
   firebase: {
     config: {
-      apiKey: 'AIzaSyBn1DP5AR2wN6irwNyI08XicNkR4CJdgMI',
-      authDomain: 'devjokes-4031d.firebaseapp.com',
-      databaseURL: 'https://devjokes-4031d.firebaseio.com',
-      projectId: 'devjokes-4031d',
-      storageBucket: 'devjokes-4031d.appspot.com',
-      messagingSenderId: '746655741397',
-      appId: '1:746655741397:web:ff32ddd58dcb90661bb95c',
-      measurementId: 'G-LV52VK9K9J'
+      apiKey: process.env.FIREBASE_APIKEY,
+      authDomain: process.env.FIREBASE_AUTHDOMAIN,
+      databaseURL: process.env.FIREBASE_DATABASEURL,
+      projectId: process.env.FIREBASE_PROJECTID,
+      storageBucket: process.env.FIREBASE_STORAGEBUCKET,
+      messagingSenderId: process.env.FIREBASE_MESSAGINGSENDERID,
+      appId: process.env.FIREBASE_APPID,
+      measurementId: process.env.FIREBASE_MEASUREMENTID
     },
     services: {
       firestore: true
@@ -74,8 +74,8 @@ export default {
   auth: {
     strategies: {
       github: {
-        client_id: '04bd6ee857dcecce5db3',
-        client_secret: '4bbe79e74357ff08631c4a7cf38f79517c1ef1d9'
+        client_id: process.env.GITHUB_CLIENTID,
+        client_secret: process.env.GITHUB_CLIENTSECRET
       }
     }
   },
