@@ -56,6 +56,9 @@
             >Submit joke</v-btn
           >
           <v-btn nuxt class="ma-2" title tile text to="/about">About</v-btn>
+          <v-btn v-if="loggedIn" class="ma-2" title tile text @click="logout"
+            >Logout8</v-btn
+          >
         </v-toolbar>
         <nuxt />
       </v-content>
@@ -67,15 +70,11 @@
 export default {
   data() {
     return {
-      drawer: null,
       loggedIn: this.$auth.loggedIn,
       user: this.$auth.user
     }
   },
   methods: {
-    login() {
-      this.$auth.loginWith('github')
-    },
     logout() {
       this.$auth.logout()
       window.location.reload(true)
