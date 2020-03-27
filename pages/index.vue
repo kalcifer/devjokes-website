@@ -8,15 +8,20 @@
     border-color="accent"
     light
   >
-    <v-card-text v-if="randomJoke" color="primary">
+    <v-card-text v-if="randomJoke" color="teal">
       <div class="overline mb-4 secondary--text">
         Joke no:{{ randomJoke.id }}
       </div>
-      <p class="headline mb-1 primary--text">
+      <p v-if="randomJoke.text" class="headline mb-1 primary--text">
         {{ randomJoke.text }}
       </p>
-      <v-img :src="randomJoke.img" />
+      <v-img
+        v-if="randomJoke.img"
+        :src="randomJoke.img"
+        :alt="randomJoke.imgAlt"
+      />
     </v-card-text>
+
     <v-card-actions>
       <v-spacer></v-spacer>
       <v-btn color="#442021" text @click="nextRandomJoke">Next</v-btn>
@@ -43,24 +48,10 @@ export default {
   mounted() {
     let allData = localStorage.getItem('allData') || null
     if (!allData) {
-      const db = this.$fireStore.collection('jokes')
+      const db = this.$fireStore.collection('jokelist')
       db.get().then((querySnapshot) => {
         allData = querySnapshot.docs.map((doc, index) => {
-          const { text: jokeText } = doc.data()
-          const regex = /!\[.*\]\(.*\)/
-          const imgMd = regex.exec(jokeText)
-          if (imgMd) {
-            const matchedImg = imgMd[0]
-            const matchedText = jokeText.replace(matchedImg, '')
-            const startMatch = matchedImg.indexOf('(') + 3
-            const endMatch = matchedImg.length - 1 - startMatch
-            const imgAppend = matchedImg.substr(startMatch, endMatch)
-            const img =
-              'https://raw.githubusercontent.com/shrutikapoor08/devjoke/master/' +
-              imgAppend
-            return { ...doc.data(), text: matchedText, img }
-          }
-          return { ...doc.data() }
+          return { ...doc.data(), id: index }
         })
         localStorage.setItem('allData', JSON.stringify(allData))
         this.querySnapshot = allData
@@ -79,7 +70,7 @@ export default {
           Math.random() * Math.floor(this.querySnapshot.length)
         )
         const randomJoke = this.querySnapshot[randomNo]
-        this.randomJoke = randomJoke
+        this.randomJoke = { ...randomJoke, id: randomNo }
       }
     }
   }

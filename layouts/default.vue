@@ -1,7 +1,7 @@
 <template>
   <v-sheet class="overflow-hidden " style="position: relative;">
     <v-app class="green-container" light>
-      <v-navigation-drawer v-model="drawer" absolute temporary>
+      <!-- <v-navigation-drawer v-model="drawer" absolute temporary>
         <v-list-item v-if="user">
           <v-list-item-avatar class="margin-right">
             <v-img :src="user['avatar_url']"></v-img>
@@ -14,9 +14,6 @@
         <v-divider></v-divider>
         <v-list dense>
           <v-list-item :key="Home" nuxt>
-            <!-- <v-list-item-icon>
-          <v-icon>{{ item.icon }}</v-icon>
-        </v-list-item-icon> -->
             <v-list-item-content>
               <v-list-item-title
                 ><nuxt-link to="/">Home</nuxt-link></v-list-item-title
@@ -24,9 +21,6 @@
             </v-list-item-content>
           </v-list-item>
           <v-list-item v-if="loggedIn" :key="Submit" nuxt>
-            <!-- <v-list-item-icon>
-          <v-icon>{{ item.icon }}</v-icon>
-        </v-list-item-icon> -->
             <v-list-item-content>
               <v-list-item-title
                 ><nuxt-link to="/submit"
@@ -53,8 +47,16 @@
             >Logout<v-icon>mdi-logout</v-icon></v-btn
           >
         </v-toolbar>
-      </v-card>
+      </v-card> -->
       <v-content class="green-container">
+        <v-toolbar short>
+          <v-toolbar-title class="font-family ml-4 ">DEV JOKES</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-btn nuxt class="ma-2" title tile text to="/submit"
+            >Submit joke</v-btn
+          >
+          <v-btn nuxt class="ma-2" title tile text to="/about">About</v-btn>
+        </v-toolbar>
         <nuxt />
       </v-content>
     </v-app>
