@@ -21,6 +21,7 @@
         :alt="randomJoke.imgAlt"
       />
     </v-card-text>
+    <v-card-text v-if="!randomJoke">Loading</v-card-text>
 
     <v-card-actions>
       <v-spacer></v-spacer>
@@ -33,35 +34,38 @@
 </template>
 
 <script>
+const TWOHOURS = 7200000
 export default {
   data() {
     return {
-      randomJoke: {
-        id: 20,
-        text:
-          'Question - Why integration testing is required after unit testing? ![umbrella](./images/umbrella.gif)'
-      },
+      randomJoke: null,
       querySnapshot: null,
       progressValue: 0
     }
   },
   mounted() {
     let allData = localStorage.getItem('allData') || null
-    if (!allData) {
-      const db = this.$fireStore.collection('jokes')
+    const oldTime = localStorage.getItem('time') || null
+    if (!oldTime || Date.now() - oldTime > TWOHOURS) {
+      localStorage.clear()
+      const db = this.$fireStore
+        .collection('jokes')
+        .where('approved', '==', true)
+
       db.get().then((querySnapshot) => {
         allData = querySnapshot.docs.map((doc, index) => {
           return { ...doc.data(), id: index }
         })
         localStorage.setItem('allData', JSON.stringify(allData))
         this.querySnapshot = allData
+        localStorage.setItem('time', Date.now())
+        this.nextRandomJoke()
       })
     } else {
       allData = JSON.parse(allData)
       this.querySnapshot = allData
+      this.nextRandomJoke()
     }
-
-    this.nextRandomJoke()
   },
   methods: {
     nextRandomJoke() {

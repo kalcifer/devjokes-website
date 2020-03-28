@@ -1,9 +1,6 @@
 export default {
   mode: 'spa',
-  // server: {
-  //   port: 8000, // default: 3000
-  //   host: '0.0.0.0' // default: localhost
-  // },
+
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -40,16 +37,6 @@ export default {
     '@nuxtjs/vuetify'
   ],
   firebase: {
-    // config: {
-    //   apiKey: 'AIzaSyBn1DP5AR2wN6irwNyI08XicNkR4CJdgMI',
-    //   authDomain: 'devjokes-4031d.firebaseapp.com',
-    //   databaseURL: 'https://devjokes-4031d.firebaseio.com',
-    //   projectId: 'devjokes-4031d',
-    //   storageBucket: 'devjokes-4031d.appspot.com',
-    //   messagingSenderId: '746655741397',
-    //   appId: '1:746655741397:web:eb97540b38dd976f1bb95c',
-    //   measurementId: 'G-FX1B0QZ1VB'
-    // },
     config: {
       apiKey: process.env.FIREBASE_APIKEY,
       authDomain: process.env.FIREBASE_AUTHDOMAIN,
@@ -70,12 +57,6 @@ export default {
         client_id: process.env.GITHUB_CLIENTID,
         client_secret: process.env.GITHUB_CLIENTSECRET
       }
-      // github: {
-      //   client_id: process.env.GITHUB_CLIENTID || '3b8bc77bfcbd3a4747d5',
-      //   client_secret:
-      //     process.env.GITHUB_CLIENTSECRET ||
-      //     '39b935177380c787b8222502d4652c0eec3173c8'
-      // }
     }
   },
   /*

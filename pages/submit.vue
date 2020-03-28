@@ -1,9 +1,9 @@
 <template>
   <v-card class="mx-auto mt-10" max-width="400" min-height="200" raised>
-    <v-form ref="form" v-model="valid" lazy-validation>
+    <v-form v-if="success === false" ref="form" v-model="valid" lazy-validation>
       <v-col cols="12">
         <v-spacer></v-spacer>
-        <v-textarea v-model="jokeText" color="#f5aab4" auto-grow>
+        <v-textarea v-model="jokeText" color="#f5aab4" auto-grow rows="3">
           <template v-slot:label>
             <div>Joke Text</div>
           </template>
@@ -29,28 +29,53 @@
         <v-btn color="#442021" text @click="submit">Submit</v-btn>
       </v-card-actions>
     </v-form>
+    <v-snackbar v-model="success" :top="true" color="success">
+      You're submission is successful. Pls wait for approval
+      <v-btn dark text @click="success = false">
+        Close
+      </v-btn>
+    </v-snackbar>
+    <v-snackbar v-model="error" :top="true" color="error">
+      {{ errorText }}
+      <v-btn dark text @click="error = false">
+        Close
+      </v-btn>
+    </v-snackbar>
   </v-card>
 </template>
 
 <script>
 export default {
   middleware: 'auth',
-
+  data: () => ({
+    success: false,
+    error: false,
+    errorText: ''
+  }),
   methods: {
     async submit() {
       const currentData = localStorage.getItem('allData')
-      const newDoc = this.$fireStore
-        .collection('jokes')
-        .doc(`joke${currentData.length}`)
+      this.success = false
       try {
-        await newDoc.set({
-          text: this.jokeText
-        })
+        const actualData = JSON.parse(currentData)
+
+        const newDoc = this.$fireStore
+          .collection('jokes')
+          .doc(`joke${actualData.length}`)
+        const newJoke = {
+          text: this.jokeText,
+          img: this.jokeImgUrl,
+          username: this.$auth.user.id,
+          approved: false
+        }
+        localStorage.clear()
+        await newDoc.set(newJoke)
       } catch (e) {
-        alert(e)
-        return
+        this.error = true
+        this.errorText = e
       }
-      alert('Success.')
+      this.success = true
+      setTimeout(() => this.$router.push('/'), 500)
     }
     // validate() {
     //   this.$refs.form.validate()
