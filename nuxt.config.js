@@ -1,6 +1,5 @@
-console.log(process.env)
 export default {
-  mode: 'universal',
+  mode: 'spa',
   head: {
     title: process.env.npm_package_name || '',
     meta: [

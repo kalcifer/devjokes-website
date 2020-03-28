@@ -18,5 +18,17 @@
       "FIREBASE_MEASUREMENTID": "@firebase_measurementid",
       "GITHUB_CLIENTID":"@github_clientid",
       "GITHUB_CLIENTSECRET": "@github_secret"
-    }}
+    }},
+    "env":{
+      "FIREBASE_APIKEY": "@firebase_apikey",
+      "FIREBASE_AUTHDOMAIN": "@firebase_authdomain",
+      "FIREBASE_DATABASEURL": "@firebase_databaseurl",
+      "FIREBASE_PROJECTID": "@firebase_projectid",
+      "FIREBASE_STORAGEBUCKET": "@firebase_storagebucket",
+      "FIREBASE_MESSAGINGSENDERID": "@firebase_messagingsenderid",
+      "FIREBASE_APPID": "@firebase_appid",
+      "FIREBASE_MEASUREMENTID": "@firebase_measurementid",
+      "GITHUB_CLIENTID":"@github_clientid",
+      "GITHUB_CLIENTSECRET": "@github_secret"
+    }
   }

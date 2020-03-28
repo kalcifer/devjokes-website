@@ -1,6 +1,6 @@
 <template>
   <v-card class="mx-auto mt-10" max-width="400" min-height="200" raised>
-    <v-form v-if="success === false" ref="form" v-model="valid" lazy-validation>
+    <v-form v-if="success === false" ref="form" lazy-validation>
       <v-col cols="12">
         <v-spacer></v-spacer>
         <v-textarea v-model="jokeText" color="#f5aab4" auto-grow rows="3">
@@ -77,15 +77,6 @@ export default {
       this.success = true
       setTimeout(() => this.$router.push('/'), 500)
     }
-    // validate() {
-    //   this.$refs.form.validate()
-    // },
-    // reset() {
-    //   this.$refs.form.reset()
-    // },
-    // resetValidation() {
-    //   this.$refs.form.resetValidation()
-    // }
   }
 }
 </script>

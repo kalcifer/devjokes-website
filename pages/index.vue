@@ -4,7 +4,6 @@
     max-width="400"
     min-height="200"
     raised
-    :loading="true"
     border-color="accent"
     light
   >
@@ -27,9 +26,6 @@
       <v-spacer></v-spacer>
       <v-btn color="#442021" text @click="nextRandomJoke">Next</v-btn>
     </v-card-actions>
-    <template #progress>
-      <v-progress></v-progress>
-    </template>
   </v-card>
 </template>
 
