@@ -48,7 +48,7 @@ export default {
   mounted() {
     let allData = localStorage.getItem('allData') || null
     if (!allData) {
-      const db = this.$fireStore.collection('jokelist')
+      const db = this.$fireStore.collection('jokes')
       db.get().then((querySnapshot) => {
         allData = querySnapshot.docs.map((doc, index) => {
           return { ...doc.data(), id: index }
