@@ -17,6 +17,6 @@
       "FIREBASE_APPID": "@firebase_appid",
       "FIREBASE_MEASUREMENTID": "@firebase_measurementid",
       "GITHUB_CLIENTID":"@github_clientid",
-      "GITHUB_CLIENTSECRET": "@github_clientsecret"
+      "GITHUB_CLIENTSECRET": "@github_secret"
     }}
   }
