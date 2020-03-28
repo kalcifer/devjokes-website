@@ -40,26 +40,26 @@ export default {
     '@nuxtjs/vuetify'
   ],
   firebase: {
-    config: {
-      apiKey: 'AIzaSyBn1DP5AR2wN6irwNyI08XicNkR4CJdgMI',
-      authDomain: 'devjokes-4031d.firebaseapp.com',
-      databaseURL: 'https://devjokes-4031d.firebaseio.com',
-      projectId: 'devjokes-4031d',
-      storageBucket: 'devjokes-4031d.appspot.com',
-      messagingSenderId: '746655741397',
-      appId: '1:746655741397:web:eb97540b38dd976f1bb95c',
-      measurementId: 'G-FX1B0QZ1VB'
-    },
     // config: {
-    //   apiKey: process.env.FIREBASE_APIKEY,
-    //   authDomain: process.env.FIREBASE_AUTHDOMAIN,
-    //   databaseURL: process.env.FIREBASE_DATABASEURL,
-    //   projectId: process.env.FIREBASE_PROJECTID,
-    //   storageBucket: process.env.FIREBASE_STORAGEBUCKET,
-    //   messagingSenderId: process.env.FIREBASE_MESSAGINGSENDERID,
-    //   appId: process.env.FIREBASE_APPID,
-    //   measurementId: process.env.FIREBASE_MEASUREMENTID
+    //   apiKey: 'AIzaSyBn1DP5AR2wN6irwNyI08XicNkR4CJdgMI',
+    //   authDomain: 'devjokes-4031d.firebaseapp.com',
+    //   databaseURL: 'https://devjokes-4031d.firebaseio.com',
+    //   projectId: 'devjokes-4031d',
+    //   storageBucket: 'devjokes-4031d.appspot.com',
+    //   messagingSenderId: '746655741397',
+    //   appId: '1:746655741397:web:eb97540b38dd976f1bb95c',
+    //   measurementId: 'G-FX1B0QZ1VB'
     // },
+    config: {
+      apiKey: process.env.FIREBASE_APIKEY,
+      authDomain: process.env.FIREBASE_AUTHDOMAIN,
+      databaseURL: process.env.FIREBASE_DATABASEURL,
+      projectId: process.env.FIREBASE_PROJECTID,
+      storageBucket: process.env.FIREBASE_STORAGEBUCKET,
+      messagingSenderId: process.env.FIREBASE_MESSAGINGSENDERID,
+      appId: process.env.FIREBASE_APPID,
+      measurementId: process.env.FIREBASE_MEASUREMENTID
+    },
     services: {
       firestore: true
     }
@@ -67,11 +67,15 @@ export default {
   auth: {
     strategies: {
       github: {
-        client_id: process.env.GITHUB_CLIENTID || '3b8bc77bfcbd3a4747d5',
-        client_secret:
-          process.env.GITHUB_CLIENTSECRET ||
-          '39b935177380c787b8222502d4652c0eec3173c8'
+        client_id: process.env.GITHUB_CLIENTID,
+        client_secret: process.env.GITHUB_CLIENTSECRET
       }
+      // github: {
+      //   client_id: process.env.GITHUB_CLIENTID || '3b8bc77bfcbd3a4747d5',
+      //   client_secret:
+      //     process.env.GITHUB_CLIENTSECRET ||
+      //     '39b935177380c787b8222502d4652c0eec3173c8'
+      // }
     }
   },
   /*
