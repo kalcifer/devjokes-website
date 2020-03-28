@@ -50,14 +50,18 @@
       </v-card> -->
       <v-content class="green-container">
         <v-toolbar short>
-          <v-toolbar-title class="font-family ml-4 ">DEV JOKES</v-toolbar-title>
+          <v-toolbar-title
+            ><nuxt-link to="/" class="font-family">
+              DEV JOKES</nuxt-link
+            ></v-toolbar-title
+          >
           <v-spacer></v-spacer>
           <v-btn nuxt class="ma-2" title tile text to="/submit"
             >Submit joke</v-btn
           >
           <v-btn nuxt class="ma-2" title tile text to="/about">About</v-btn>
           <v-btn v-if="loggedIn" class="ma-2" title tile text @click="logout"
-            >Logout8</v-btn
+            >Logout</v-btn
           >
         </v-toolbar>
         <nuxt />
@@ -75,6 +79,9 @@ export default {
     }
   },
   methods: {
+    login() {
+      this.$auth.loginWith('github')
+    },
     logout() {
       this.$auth.logout()
       window.location.reload(true)
@@ -96,7 +103,7 @@ html {
 }
 .font-family {
   font-family: 'VT323', monospace;
-  font-size: 70px;
+  font-size: 70px !important;
   color: #424242;
 }
 
