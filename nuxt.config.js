@@ -1,6 +1,9 @@
 export default {
   mode: 'spa',
-
+  server: {
+    port: 8000, // default: 3000
+    host: 'localhost' // default: localhost
+  },
   head: {
     title: process.env.npm_package_name || '',
     meta: [
