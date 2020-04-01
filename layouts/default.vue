@@ -1,53 +1,6 @@
 <template>
   <v-sheet class="overflow-hidden " style="position: relative;">
     <v-app class="green-container" light>
-      <!-- <v-navigation-drawer v-model="drawer" absolute temporary>
-        <v-list-item v-if="user">
-          <v-list-item-avatar class="margin-right">
-            <v-img :src="user['avatar_url']"></v-img>
-          </v-list-item-avatar>
-          <v-divider vertical="true"></v-divider>
-          <v-list-item-content class="margin-left">
-            <v-list-item-title>{{ user.login }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-divider></v-divider>
-        <v-list dense>
-          <v-list-item :key="Home" nuxt>
-            <v-list-item-content>
-              <v-list-item-title
-                ><nuxt-link to="/">Home</nuxt-link></v-list-item-title
-              >
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item v-if="loggedIn" :key="Submit" nuxt>
-            <v-list-item-content>
-              <v-list-item-title
-                ><nuxt-link to="/submit"
-                  >Submit Joke</nuxt-link
-                ></v-list-item-title
-              >
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
-      </v-navigation-drawer>
-
-      <v-card color="#442021" flat tile>
-        <v-toolbar short>
-          <v-app-bar-nav-icon
-            @click.stop="drawer = !drawer"
-          ></v-app-bar-nav-icon>
-          <v-spacer></v-spacer>
-          <v-toolbar-title class="font-family">DEV JOKES</v-toolbar-title>
-          <v-spacer></v-spacer>
-          <v-btn v-if="!loggedIn" small @click="login()"
-            >Login <v-icon>mdi-login</v-icon></v-btn
-          >
-          <v-btn v-if="loggedIn" small @click="logout()"
-            >Logout<v-icon>mdi-logout</v-icon></v-btn
-          >
-        </v-toolbar>
-      </v-card> -->
       <v-content class="green-container">
         <v-toolbar short>
           <v-toolbar-title
@@ -56,10 +9,12 @@
             ></v-toolbar-title
           >
           <v-spacer></v-spacer>
-          <v-btn nuxt class="ma-2" title tile text to="/submit"
+          <v-btn nuxt class="ma-2" title tile text to="/submit" v-bind="size"
             >Submit joke</v-btn
           >
-          <v-btn nuxt class="ma-2" title tile text to="/about">About</v-btn>
+          <v-btn nuxt class="ma-2" title tile text to="/about" v-bind="size"
+            >About</v-btn
+          >
           <v-btn v-if="loggedIn" class="ma-2" title tile text @click="logout"
             >Logout</v-btn
           >
@@ -76,6 +31,14 @@ export default {
     return {
       loggedIn: this.$auth.loggedIn,
       user: this.$auth.user
+    }
+  },
+  computed: {
+    size() {
+      const size = { xs: 'x-small', sm: 'small', lg: 'large', xl: 'x-large' }[
+        this.$vuetify.breakpoint.name
+      ]
+      return size ? { [size]: true } : {}
     }
   },
   methods: {
@@ -103,7 +66,7 @@ html {
 }
 .font-family {
   font-family: 'VT323', monospace;
-  font-size: 70px !important;
+  font-size: 5vw !important;
   color: #424242;
 }
 
