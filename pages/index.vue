@@ -1,17 +1,22 @@
 <template>
   <v-card
-    class="mx-auto mt-10"
-    max-width="400"
+    class="mx-auto mt-12"
+    max-width="500"
     min-height="200"
     raised
     border-color="accent"
     light
   >
-    <v-card-text v-if="randomJoke" color="teal">
-      <div class="overline mb-4 secondary--text">
+    <v-card-text v-if="randomJoke" class="accent--text">
+      <div class="mb-4 subtitle-2" align="left">
         Joke no:{{ randomJoke.id }}
       </div>
-      <p v-if="randomJoke.text" class="headline mb-1 primary--text">
+      <p
+        v-if="randomJoke.text"
+        class="display-1 mb-1 primary--text"
+        justify="left"
+        align="center"
+      >
         {{ randomJoke.text }}
       </p>
       <v-img

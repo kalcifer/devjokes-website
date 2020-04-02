@@ -76,11 +76,21 @@ export default {
   vuetify: {
     theme: {
       themes: {
+        // light: {
+        //   background: '#1b262c',
+        //   primary: '#008080',
+        //   secondary: '#424242',
+        //   accent: '#ffa372',
+        //   error: '#FF5252',
+        //   info: '#2196F3',
+        //   success: '#4CAF50',
+        //   warning: '#FFC107'
+        // },
         light: {
-          background: '#1b262c',
-          primary: '#008080',
-          secondary: '#424242',
-          accent: '#ffa372',
+          background: '#fef6e4',
+          primary: '#001858',
+          secondary: '#8bd3dd',
+          accent: '#f582ae',
           error: '#FF5252',
           info: '#2196F3',
           success: '#4CAF50',

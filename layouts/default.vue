@@ -1,32 +1,42 @@
 <template>
-  <v-sheet class="overflow-hidden " style="position: relative;">
-    <v-app class="green-container" light>
-      <v-content class="green-container">
-        <v-toolbar short>
-          <v-toolbar-title
-            ><nuxt-link to="/" class="font-family">
-              DEV JOKES</nuxt-link
-            ></v-toolbar-title
-          >
-          <v-spacer></v-spacer>
-          <v-btn nuxt class="ma-2" title tile text to="/submit" v-bind="size"
-            >Submit joke</v-btn
-          >
-          <v-btn nuxt class="ma-2" title tile text to="/about" v-bind="size"
-            >About</v-btn
-          >
-          <v-btn v-if="loggedIn" class="ma-2" title tile text @click="logout"
-            >Logout</v-btn
-          >
-        </v-toolbar>
-        <nuxt />
-      </v-content>
-    </v-app>
+  <v-sheet color="primary" light>
+    <v-container fill-height fluid>
+      <GithubCorner
+        git-color="#f582ae"
+        url="https://github.com/kalcifer/devjokes-website"
+      ></GithubCorner>
+      <v-app align="center" justify="center" max-width="600">
+        <v-content>
+          <div class="font-family font-weight-black primary--text">
+            DEV JOKES
+          </div>
+          <div>
+            <v-btn nuxt class="ma-2" title tile text to="/" v-bind="size"
+              >Home</v-btn
+            >
+            <v-btn nuxt class="ma-2" title tile text to="/submit" v-bind="size"
+              >Submit joke</v-btn
+            >
+            <v-btn nuxt class="ma-2" title tile text to="/about" v-bind="size"
+              >About</v-btn
+            >
+            <v-btn v-if="loggedIn" class="ma-2" title tile text @click="logout"
+              >Logout</v-btn
+            >
+          </div>
+          <nuxt />
+        </v-content>
+      </v-app>
+    </v-container>
   </v-sheet>
 </template>
 
 <script>
+import GithubCorner from 'vue-github-corners'
 export default {
+  components: {
+    GithubCorner
+  },
   data() {
     return {
       loggedIn: this.$auth.loggedIn,
@@ -65,9 +75,8 @@ html {
   box-sizing: border-box;
 }
 .font-family {
-  font-family: 'VT323', monospace;
-  font-size: 5vw !important;
-  color: #424242;
+  font-family: 'VT323', monospace !important;
+  font-size: 13vw;
 }
 
 *,
@@ -77,43 +86,14 @@ html {
   margin: 0;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+.v-btn--active:before {
+  color: #f582ae;
 }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+.v-btn:hover::before {
+  color: #f582ae;
 }
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}
-.green-container {
-  background-color: #1b262c;
-}
-
-.margin-right {
-  margin-right: 10px;
-}
-
-.margin-left {
-  margin-left: 10px;
+.link-button:active {
+  background-color: 'secondary' !important;
 }
 </style>

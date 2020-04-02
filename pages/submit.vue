@@ -3,7 +3,7 @@
     <v-form v-if="success === false" ref="form" lazy-validation>
       <v-col cols="12">
         <v-spacer></v-spacer>
-        <v-textarea v-model="jokeText" color="#f5aab4" auto-grow rows="3">
+        <v-textarea v-model="jokeText" color="" auto-grow rows="3">
           <template v-slot:label>
             <div>Joke Text</div>
           </template>
