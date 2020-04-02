@@ -2,6 +2,7 @@
   <v-sheet color="primary" light>
     <v-container fill-height fluid>
       <GithubCorner
+        corner-color="#001858"
         git-color="#f582ae"
         url="https://github.com/kalcifer/devjokes-website"
       ></GithubCorner>
