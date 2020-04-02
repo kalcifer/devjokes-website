@@ -3,7 +3,7 @@
     <v-container fill-height fluid>
       <GithubCorner
         corner-color="#001858"
-        git-color="#f582ae"
+        git-color="#fef6e4"
         url="https://github.com/kalcifer/devjokes-website"
       ></GithubCorner>
       <v-app align="center" justify="center" max-width="600">
